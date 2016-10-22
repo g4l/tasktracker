@@ -1,0 +1,58 @@
+<div class="row">
+  <ol class="breadcrumb">
+    <li><a ui-sref="projects">Projects</a></li>
+    <li><a ui-sref="project">{{$ctrl.project.name}}</a></li>
+    <li class="active">{{$ctrl.task.name}}</li>
+  </ol>
+  <h3>{{$ctrl.task.name}}</h3>
+  <div class="btn-group btn-group-justified" role="group">
+    <div class="btn-group" role="group">
+      <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></button>
+    </div>
+    <div class="btn-group" role="group">
+      <button class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></button>
+    </div>
+    <div class="btn-group" role="group">
+      <button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+    </div>
+  </div>
+  <div class="center-text task-params">
+    <strong>Date:</strong> <em>{{$ctrl.task.date}}</em> | 
+    <strong>Status:</strong> <em>{{$ctrl.task.status}}</em> | 
+    <strong>Priority:</strong> <em>{{$ctrl.task.priority}}</em> | 
+    <strong>Author:</strong> <a ui-sref="user({id: $ctrl.author.id})">{{$ctrl.author.name}}</a> | 
+    <strong>Executor:</strong> <a ui-sref="user({id: $ctrl.executor.id})">{{$ctrl.executor.name}}</a>
+  </div>
+  <h4>Description</h4>
+  <div class="task-description">
+    {{$ctrl.task.description}}
+  </div>
+  <div class="task-comments">
+    <h4>Comments</h4>
+    <dir-disqus config="$ctrl.disqusConfig"></dir-disqus>
+                                
+                                
+    <!--<div class="task-comment">
+      <div class="left">
+        <strong>From: </strong>
+        <em><a href="#">Author-comment</a></em>
+      </div>
+      <div class="right">
+        <strong><span class="glyphicon glyphicon-time"></span> 12.12.12</strong>
+      </div>
+      <div class="clearfix"></div>
+      <div class="task-comment-text">This is text comment</div>
+    </div>
+    <div class="task-comment">
+      <div class="left">
+        <strong>From: </strong>
+        <em><a href="#">Author-comment</a></em>
+      </div>
+      <div class="right">
+        <strong><span class="glyphicon glyphicon-time"></span> 12.12.12</strong>
+      </div>
+      <div class="clearfix"></div>
+      <div class="task-comment-text">This is text comment</div>
+    </div>-->
+  </div>
+</div>

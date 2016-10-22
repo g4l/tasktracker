@@ -1,0 +1,8 @@
+<h1 class="left">Projects</h1>
+<a ui-sref="addProject" class="btn btn-default right"><span class="glyphicon glyphicon-plus"></span> Add project (не реализовано)</a>
+<div class="clearfix"></div>
+<ol class="list-group">
+  <li class="list-group-item" ng-repeat="project in $ctrl.projects">
+    <a ui-sref="project({id: project.id})">{{project.name}}</a>
+  </li>
+</ol>
