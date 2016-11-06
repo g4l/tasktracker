@@ -74,3 +74,16 @@
   padding: 10px;
   margin-top: 5px;
 }
+
+.short-text {
+  /*white-space: nowrap;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 100px;
+}
+
+.panel-heading, .panel-heading h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

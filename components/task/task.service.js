@@ -6,6 +6,28 @@ app.service('TasksService', function($http){
   };
   
   this.getTask = (id) => {
-    return $http.get(link + '?filter=id,cs,' + id + '&transform=1').then(response => response.data.task_tasks[0]);
+    return $http.get(link + '/' + id).then(response => response.data);
+    // '?filter=id,cs,' + id + '&transform=1'
+  };
+
+  this.addTask = (name, description, date, priority, author_id, executor_id, project_id) => {
+    return $http.post(link, {
+      "name": name,
+      "description": description,
+      "status": "1",
+      "date": date,
+      "priority": priority,
+      "author_id": author_id,
+      "executor_id": executor_id,
+      "project_id": project_id
+    }).then(response => response.data);
+  };
+
+  this.deleteTask = (id) => {
+    return $http.delete(link + '/' + id).then(response => response);
+  };
+
+  this.editTask = (task) => {
+    return $http.put(link + '/' + task.id, task).then(response => response);
   };
 });

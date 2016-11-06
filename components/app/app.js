@@ -61,6 +61,24 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
       $scope.project = project;
     }
   })
+
+  .state('add-project', {
+    url: '/add-project',
+    template: '<add-project></add-project>'
+  })
+
+  .state('edit-project', {
+    url: '/edit-project/:projectId',
+    template: '<edit-project project=project></edit-project>',
+    resolve: {
+      project: function(ProjectsService, $stateParams) {
+        return ProjectsService.getProject($stateParams.projectId);
+      }
+    },
+    controller: function ($scope, project) {
+      $scope.project = project;
+    }
+  })
   
   .state('task', {
     url: '/project/:projectId/task/:taskId',
@@ -106,6 +124,38 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
         $state.go('signin');
       });
     }
+  })
+
+  .state('add-task', {
+    url: '/project/:projectId/add-task',
+    template: '<add-task users=users project=project></add-task>',
+    resolve: {
+      users: function(UsersService) {
+        return UsersService.getAll();
+      }
+    },
+    controller: function ($scope, $stateParams, users) {
+      $scope.users = users;
+      $scope.project = $stateParams.projectId;
+    }
+  })
+
+  .state('edit-task', {
+    url: '/project/:projectId/edit-task/:taskId',
+    template: '<edit-task users=users project=project task=task></edit-task>',
+    resolve: {
+      users: function(UsersService) {
+        return UsersService.getAll();
+      },
+      task: function (TasksService, $stateParams) {
+        return TasksService.getTask($stateParams.taskId);
+      }
+    },
+    controller: function ($scope, $stateParams, users, task) {
+      $scope.users = users;
+      $scope.project = $stateParams.projectId;
+      $scope.task = task;
+    }
   });
   
   $urlRouterProvider.otherwise('/');
@@ -117,8 +167,10 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
   $httpProvider.interceptors.push('AuthRejector');
 })
 
-/*.run(function($rootScope, AuthService){
+.run(function($rootScope, AuthService, $state){
   if(!$rootScope.user){
-    AuthService.getUser();
+    AuthService.getUser().then(data => data).catch((e) => {
+      $state.go('signin');
+    });
   }
-});*/
+});
