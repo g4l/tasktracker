@@ -5,7 +5,7 @@ app.component('signin', {
       AuthService.signin(email, password).then(data => {
         $state.go('projects');
       }).catch((e) => {
-        this.error = 'Неверно введёно логин и/или пароль!';
+        this.error = 'Incorrectly entered email and/or password!';
       });
     };
   }

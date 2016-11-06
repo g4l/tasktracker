@@ -87,3 +87,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.signin-error {
+  color: #f00;
+  font-weight: bold;
+}

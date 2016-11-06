@@ -1,11 +1,11 @@
 <form class="form-signin">
   <h2 class="form-signin-heading">Please sign in</h2>
+  <div class="signin-error">{{$ctrl.error}}</div>
   <div>
     <strong>Email:</strong> alex@mail.ru</br>
     <strong>Password:</strong> qwerty
-  </div>
-  <div class="signin-error">{{$ctrl.error}}</div>
-  <label for="inputEmail" class="sr-only">Email address</label>
+  </div><br>
+  <label for="inputEmail" class="sr-only">Email</label>
   <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" ng-model="email">
   <label for="inputPassword" class="sr-only">Password</label>
   <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" ng-model="password">
