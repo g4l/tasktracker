@@ -8,6 +8,18 @@ app.service('AuthService', function($http, $rootScope){
       return response.data;
     });
   };
+
+  this.signup = (email, name, date, password) => {
+    return $http.post(link + '/task_users', {
+      "email": email,
+      "name": name,
+      "date": date,
+      "img": "http://vebmastak.ru/Fail/Veb/noavatar.gif",
+      "password": password
+    }).then((response) => {
+      return this.signin(email, password);
+    });
+  };
   
   this.signout = () => {
     return $http.post(link, {"logout": "logout"}).then(response => {

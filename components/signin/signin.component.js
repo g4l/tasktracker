@@ -1,6 +1,10 @@
 app.component('signin', {
   templateUrl: 'components/signin/signin.tpl.html',
-  controller: function($state, AuthService){
+  controller: function($rootScope, $state, AuthService){
+    if($rootScope.user){
+      $state.go('projects');
+    }
+
     this.signin = (email, password) => {
       AuthService.signin(email, password).then(data => {
         $state.go('projects');

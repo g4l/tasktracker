@@ -17,23 +17,23 @@ app.component('task', {
     };
 
     this.delete = () => {
-      TasksService.deleteTask(this.task.id).then(data => data);
-
-      $state.go('project', {id: this.project.id});
+      TasksService.deleteTask(this.task.id).then((data) => {
+        $state.go('project', {id: this.project.id});
+      });
     };
 
     this.complete = () => {
       this.task.status = 2;
-      TasksService.editTask(this.task);
-
-      $state.go('project', {id: this.project.id});
+      TasksService.editTask(this.task).then((data) => {
+        $state.go('project', {id: this.project.id});
+      });
     };
 
     this.reopen = () => {
       this.task.status = 1;
-      TasksService.editTask(this.task);
-
-      $state.go('project', {id: this.project.id});
+      TasksService.editTask(this.task).then((data) => {
+        $state.go('project', {id: this.project.id});
+      });
     };
   }
 });

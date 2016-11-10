@@ -19,7 +19,7 @@
   </div>
   <div class="center-text task-params">
     <strong>Date:</strong> <em>{{$ctrl.task.date}}</em> | 
-    <strong>Status:</strong> <em>{{$ctrl.task.status}}</em> | 
+    <strong>Status:</strong> <em>{{::$ctrl.task.status}}</em> |
     <strong>Priority:</strong> <em>{{$ctrl.task.priority}}</em> | 
     <strong>Author:</strong> <a ui-sref="user({id: $ctrl.author.id})">{{$ctrl.author.name}}</a> | 
     <strong>Executor:</strong> <a ui-sref="user({id: $ctrl.executor.id})">{{$ctrl.executor.name}}</a>

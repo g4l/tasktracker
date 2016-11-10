@@ -18,6 +18,7 @@
   <script src="/components/projects/edit-project/edit-project.component.js"></script>
   <script src="/components/signin/signin.component.js"></script>
   <script src="/components/signin/signin.service.js"></script>
+  <script src="/components/signup/signup.component.js"></script>
   <script src="/components/users/users.service.js"></script>
   <script src="/components/users/users/users.component.js"></script>
   <script src="/components/users/user/user.component.js"></script>
@@ -51,7 +52,7 @@
           <li ui-sref="user({id: user.id})" ui-sref-active="active"><a ui-sref="user({id: user.id})" ui-sref-active="active">My profile</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li ng-if="!user"><a href="#">Sing Up</a></li>
+          <li ng-if="!user" ui-sref="signup" ui-sref-active="active"><a ui-sref="signup" ui-sref-active="active">Sing Up</a></li>
           <li ng-if="!user" ui-sref="signin" ui-sref-active="active"><a ui-sref="signin" ui-sref-active="active">Sign In</a></li>
           <li ng-if="user" ui-sref="signout" ui-sref-active="active"><a ui-sref="signout" ui-sref-active="active">Sign Out</a></li>
         </ul>

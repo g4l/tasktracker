@@ -5,6 +5,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
     url: '/signin',
     template: '<signin></signin>'
   })
+
+	.state('signup', {
+		url: '/signup',
+		template: '<signup></signup>'
+	})
   
   .state('projects', {
     url: '/',
@@ -168,7 +173,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
 })
 
 .run(function($rootScope, AuthService, $state){
-  if(!$rootScope.user){
+  if(!$rootScope.user && $state.current.name !== 'signup'){
     AuthService.getUser().then(data => data).catch((e) => {
       $state.go('signin');
     });
